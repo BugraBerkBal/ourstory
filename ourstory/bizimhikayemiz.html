@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Bizim Hikayemiz 💞</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+                  url('arkaplan.jpg') center/cover no-repeat fixed;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      margin-top: 30px;
+      color: #ffb6c1;
+    }
+
+    /* 🎬 GİRİŞ EKRANI */
+    #intro {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at center, #ffb6c1, #ff7b94);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      z-index: 9999;
+      animation: fadeOut 1s ease-in-out 3.5s forwards;
+      overflow: hidden;
+    }
+
+    #intro h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255,255,255,0.8);
+      font-size: 20px;
+      animation: floatUp 4s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
+    }
+
+    /* Ana içerik */
+    .section {
+      padding: 40px 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .countdown {
+      font-size: 1.5em;
+      margin: 20px 0;
+    }
+
+    button {
+      background-color: #ff99aa;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      padding: 12px 24px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 15px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #ff7b94;
+    }
+
+    .reason-box {
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #ffe4ec;
+      min-height: 60px;
+      transition: opacity 0.5s;
+    }
+
+    .story-part {
+      margin: 30px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-in-out;
+    }
+
+    .story-part.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer {
+      font-size: 1em;
+      margin: 40px 0;
+      color: #ffd6e1;
+    }
+
+    #music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(255,255,255,0.2);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s;
+      z-index: 10000;
+    }
+    #music-btn:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 💞 GİRİŞ EKRANI -->
+  <div id="intro">
+    <h2>Hoş geldin Ecrin'imm 💞</h2>
+  </div>
+
+  <h1>Bizim Hikayemiz 💞</h1>
+
+  <!-- 🎵 Müzik butonu -->
+  <button id="music-btn">🎵</button>
+  <audio id="bg-music" loop>
+    <source src="muzik.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- 🕰️ Geri Sayım -->
+  <div class="section">
+    <h2>Sana Kavuşmama Kalan Süre</h2>
+    <div class="countdown" id="countdown"></div>
+  </div>
+
+  <!-- 💌 100 Sebep -->
+  <div class="section">
+    <h2>100 Sebep Neden Seni Seviyorum 💖</h2>
+    <button id="reason-btn">Bir neden göster 💌</button>
+    <div class="reason-box" id="reason-box"></div>
+  </div>
+
+  <!-- 📖 Bizim Hikayemiz -->
+  <div class="section">
+    <h2>Bizim Hikayemiz 📖</h2>
+    <div class="story-part">✨ Tanıştığımız gün her şey değişti...</div>
+    <div class="story-part">💬 İlk mesajın hâlâ aklımda, kalbimde yankılanıyor.</div>
+    <div class="story-part">🌙 Uykusuz gecelerimiz bile güzeldi çünkü birbirimizi düşünüyorduk.</div>
+    <div class="story-part">💞 İlk buluşmamız, kalbimin ritmini hâlâ hızlandırıyor.</div>
+    <div class="story-part">💔 Ufak kavgalarımız bile sevgimizi daha güçlü yaptı.</div>
+    <div class="story-part">🌹 Uzak olsak da kalbimiz hep yan yana oldu.</div>
+    <div class="story-part">🌍 Aramızda mesafeler olsa da hislerimiz hep yakındı.</div>
+    <div class="story-part">🕊️ Ve her geçen gün, seni daha çok seviyorum...</div>
+  </div>
+
+  <!-- 💖 Mesaj -->
+  <div class="section">
+    <h2>Son Bir Söz 💌</h2>
+    <p class="footer">Uzak olsak da, kalbim hep seninle aynı ritimde atıyor ❤️</p>
+  </div>
+
+  <script>
+    // 🎵 Müzik kontrolü
+    const musicBtn = document.getElementById('music-btn');
+    const bgMusic = document.getElementById('bg-music');
+    let playing = false;
+    musicBtn.addEventListener('click', () => {
+      if (!playing) {
+        bgMusic.play();
+        playing = true;
+        musicBtn.textContent = "🔇";
+      } else {
+        bgMusic.pause();
+        playing = false;
+        musicBtn.textContent = "🎵";
+      }
+    });
+
+    // 🕰️ Countdown
+    const countdown = document.getElementById('countdown');
+    const targetDate = new Date("November 24, 2025 00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      if (distance < 0) {
+        countdown.innerHTML = "Kavuştuk! 💞";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdown.innerHTML = `${days} Gün ${hours} Saat ${minutes} Dakika ${seconds} Saniye`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // 💌 100 Sebep
+    const reasons = [
+      "Seni seviyorum çünkü gülüşün günümü güzelleştiriyor 💕",
+      "Seni seviyorum çünkü beni olduğum gibi kabul ediyorsun.",
+      "Seni seviyorum çünkü gözlerinde huzur buluyorum.",
+      "Seni seviyorum çünkü seni düşünmeden bir gün bile geçmiyor.",
+      "Seni seviyorum çünkü birlikte olduğumuzda zaman duruyor.",
+      "Seni seviyorum çünkü sesin kalbime dokunuyor.",
+      "Seni seviyorum çünkü mesafeler bile sevgimizi yenemiyor.",
+      "Seni seviyorum çünkü bana en güzel 'biz'i öğrettin.",
+      "Seni seviyorum çünkü sen benim en güzel tesadüfümsün.",
+      "Seni seviyorum çünkü sen, sensin 💗"
+    ];
+    const reasonBtn = document.getElementById('reason-btn');
+    const reasonBox = document.getElementById('reason-box');
+    let reasonIndex = 0;
+    reasonBtn.addEventListener('click', () => {
+      reasonBox.style.opacity = 0;
+      setTimeout(() => {
+        reasonBox.textContent = reasons[reasonIndex];
+        reasonBox.style.opacity = 1;
+        reasonIndex = (reasonIndex + 1) % reasons.length;
+      }, 400);
+    });
+
+    // 📖 Scroll animasyonları
+    const stories = document.querySelectorAll('.story-part');
+    window.addEventListener('scroll', () => {
+      const trigger = window.innerHeight * 0.85;
+      stories.forEach(story => {
+        const top = story.getBoundingClientRect().top;
+        if (top < trigger) story.classList.add('visible');
+      });
+    });
+
+    // 💞 GİRİŞ EKRANI KALPLERİ
+    const intro = document.getElementById('intro');
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.animationDelay = Math.random() * 2 + 's';
+      heart.textContent = '❤️';
+      intro.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
